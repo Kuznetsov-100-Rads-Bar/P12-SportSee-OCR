@@ -5,18 +5,25 @@ import Sidebar from '../components/Sidebar/Sidebar';
 export default function Dashboard() {
   return (
     <StyledDashboard>
-      <div className='dashboard-left'>
+      <DashboardLeft>
         <Sidebar />
-        </div>
-        <div className="dashboard-right">
-                  
-        <h1 className='dashboardProfile'>Bonjour <span className='dashboardProfileUsername'>Thomas</span></h1>
-        <p className='dashboardSlogan'>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-      </div>
-        
+      </DashboardLeft>
+      <DashboardRight>
+        <DashboardProfile>Bonjour </DashboardProfile><DashboardProfilUserName>Thomas</DashboardProfilUserName>
+        <DashboardSlogan>Félicitation ! Vous avez explosé vos objectifs hier 👏</DashboardSlogan>
+      </DashboardRight>
     </StyledDashboard>
   )
 }
 
 const StyledDashboard = styled.section`display: flex`;
 
+const DashboardLeft = styled.aside``;
+
+const DashboardRight = styled.div``;
+
+const DashboardProfile = styled.h1``;
+
+const DashboardProfilUserName = styled.span`color: #ff0101`;
+
+const DashboardSlogan = styled.p``;
