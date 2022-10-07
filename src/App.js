@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Header from "./components/Header/Header";
 import Dashboard from "./pages/Dashboard";
 
+/* Importing the axios library. */
 import axios from "axios";
 
 export default function App() {

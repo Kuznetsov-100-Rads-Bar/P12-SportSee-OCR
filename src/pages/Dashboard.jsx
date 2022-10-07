@@ -78,6 +78,10 @@ const DashboardLeft = styled.aside``;
 
 const DashboardRight = styled.div`
   padding: 30px 30px 0 30px;
+
+  @media screen and (min-width: 1024px) {
+    margin: 0 auto;
+  }
 `;
 
 const DashboardAbout = styled.div``;
@@ -100,6 +104,7 @@ const DashboardSlogan = styled.p`
 const DashboardWrapper = styled.div`
   @media screen and (min-width: 1024px) {
     display: flex;
+    align-items: center;
     gap: 30px;
   }
 `;
@@ -108,6 +113,7 @@ const DashboardCharts = styled.div`
     display: flex;
     flex-direction: column;
     gap: 30px;
+    margin: 60px 0 0 0;
   }
 `;
 const DailyChartsWrapper = styled.div`
