@@ -1,18 +1,33 @@
 import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
+
 import styled from "styled-components";
+
+import Header from "../components/Header/Header";
 import ActivitiesChart from "../components/Charts/ActivitiesChart";
 import AverageSessionsChart from "../components/Charts/AverageSessionsChart";
 import DailyActivityChart from "../components/Charts/DailyActivityChart";
 import ScoreChart from "../components/Charts/ScoreChart";
 import Sidebar from "../components/Sidebar/Sidebar";
-import StatsCard from "../components/Stats/StatsCard";
-import { USER_MAIN_DATA } from "../data/MockedData";
+import StatsCardGroup from "../components/Stats/StatsCardGroup";
+
+import { useSportSeeAPI } from "../services/useSportSeeAPI";
 
 export default function Dashboard() {
-  const userId = 12;
-  const data = USER_MAIN_DATA.find((data) => data.id === userId);
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const parsedId = parseInt(id);
+  const { data, isLoading, error } = useSportSeeAPI("firstName", parsedId);
+
+  let firstName = data;
+
+  if (error || firstName === "unknown user") {
+    return navigate(`user/12`, {replace: true});
+  }
+
   return (
     <StyledDashboard>
+      <Header />
       <DashboardContainer>
         <DashboardLeft>
           <Sidebar />
@@ -22,44 +37,23 @@ export default function Dashboard() {
             <DashboardProfile>
               Bonjour{" "}
               <DashboardProfileSpan>
-                {data.userInfos.firstName}
+                {!isLoading && firstName}
               </DashboardProfileSpan>
             </DashboardProfile>
             <DashboardSlogan>
-              Félicitation ! Vous avez explosé vos objectifs hier 👏
+              {isLoading || firstName === "unknown user" ? null : "Félicitation ! Vous avez explosé vos objectifs hier 👏"}
             </DashboardSlogan>
           </DashboardAbout>
           <DashboardWrapper>
             <DashboardCharts>
-              <DailyActivityChart userId={12} />
+              <DailyActivityChart userId={parsedId} />
               <DailyChartsWrapper>
-                <AverageSessionsChart userId={12} />
-                <ActivitiesChart userId={12} />
-                <ScoreChart userId={12} />
+                <AverageSessionsChart userId={parsedId} />
+                <ActivitiesChart userId={parsedId} />
+                <ScoreChart userId={parsedId} />
               </DailyChartsWrapper>
             </DashboardCharts>
-            <DashboardStats>
-              <StatsCard
-                value={data.keyData.calorieCount}
-                unit="kCal"
-                name="Calories"
-              />
-              <StatsCard
-                value={data.keyData.proteinCount}
-                unit="g"
-                name="Proteines"
-              />
-              <StatsCard
-                value={data.keyData.carbohydrateCount}
-                unit="g"
-                name="Glucides"
-              />
-              <StatsCard
-                value={data.keyData.lipidCount}
-                unit="g"
-                name="Lipides"
-              />
-            </DashboardStats>
+            <StatsCardGroup userId={parsedId} />
           </DashboardWrapper>
         </DashboardRight>
       </DashboardContainer>
@@ -90,10 +84,12 @@ const DashboardProfile = styled.h1`
   margin: 0;
   font-size: 3rem;
   font-family: "Roboto", sans-serif;
+  font-weight: 500;
 `;
 
 const DashboardProfileSpan = styled.span`
   color: #ff0101;
+  font-weight: 500;
 `;
 
 const DashboardSlogan = styled.p`
@@ -121,9 +117,4 @@ const DailyChartsWrapper = styled.div`
     display: flex;
     justify-content: space-between;
   }
-`;
-const DashboardStats = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
 `;

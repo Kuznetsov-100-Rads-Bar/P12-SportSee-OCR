@@ -1,24 +1,24 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import styled from "styled-components";
 
-export default function StatsCard({ name, value, unit }) {
+export default function StatsCard({ value, name, unit }) {
   const bgColor =
     name === "Calories"
       ? "rgba(235, 64, 52, 0.1);"
       : name === "Proteines"
-      ? "rgba(74, 184, 255, 0.1);"
-      : name === "Glucides"
-      ? "rgba(252, 186, 3, 0.1)"
-      : "rgba(253, 81, 129, 0.1);";
+        ? "rgba(74, 184, 255, 0.1);"
+        : name === "Glucides"
+          ? "rgba(252, 186, 3, 0.1)"
+          : "rgba(253, 81, 129, 0.1);";
   return (
     <StyledStatsCard>
       <StatsCardIcon>
         <StatsCardIconImage
           bgColor={bgColor}
-          src={`${
-            process.env.PUBLIC_URL
-          }/assets/icons/${name.toLowerCase()}.svg`}
+          src={`${process.env.PUBLIC_URL
+            }/assets/icons/${name.toLowerCase()}.svg`}
         />
       </StatsCardIcon>
       <StatsCardWrapper>
@@ -30,6 +30,12 @@ export default function StatsCard({ name, value, unit }) {
       </StatsCardWrapper>
     </StyledStatsCard>
   );
+}
+
+StatsCard.propTypes = {
+  value: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  unit: PropTypes.string.isRequired
 }
 
 const StyledStatsCard = styled.div`

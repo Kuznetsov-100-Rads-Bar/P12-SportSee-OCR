@@ -5,12 +5,16 @@ import styled from "styled-components";
 
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
-import { USER_MAIN_DATA } from "../../data/MockedData";
+import { useSportSeeAPI } from "../../services/useSportSeeAPI";
 
 export default function ScoreChart({ userId }) {
-  const todayScore = USER_MAIN_DATA.find(
-    (data) => data.id === userId
-  ).todayScore;
+  const { data, isLoading, error } = useSportSeeAPI("today-score", userId);
+
+  let todayScore = data;
+
+  if (error || isLoading) {
+    todayScore = 0;
+  }
 
   const pieData = [
     { name: "completed", value: todayScore, fillColor: "#ff0101" },

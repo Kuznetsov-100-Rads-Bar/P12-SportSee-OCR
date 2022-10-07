@@ -14,13 +14,16 @@ import {
 
 import styled from "styled-components";
 
-import { USER_ACTIVITY } from "../../data/MockedData";
+import { getDefaultDailyActivity, useSportSeeAPI } from "../../services/useSportSeeAPI";
 
 export default function DailyActivityChart({ userId }) {
-  // TEMP
-  const dailyActivity = USER_ACTIVITY.find(
-    (data) => data.userId === userId
-  ).sessions;
+  const { data, isLoading, error } = useSportSeeAPI("daily-activity", userId);
+
+  let dailyActivity = data;
+
+  if (error || isLoading) {
+    dailyActivity = getDefaultDailyActivity();
+  }
 
   return (
     <StyledDailyActivityChart>

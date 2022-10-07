@@ -13,12 +13,16 @@ import {
   YAxis,
 } from "recharts";
 
-import { USER_AVERAGE_SESSIONS } from "../../data/MockedData";
+import { getDefaultAverageSessions, useSportSeeAPI } from "../../services/useSportSeeAPI";
 
 export default function AverageSessionsChart({ userId }) {
-  const averageSessions = USER_AVERAGE_SESSIONS.find(
-    (data) => data.userId === userId
-  ).sessions;
+  const { data, isLoading, error } = useSportSeeAPI("average-sessions", userId);
+
+  let averageSessions = data;
+
+  if (error || isLoading) {
+    averageSessions = getDefaultAverageSessions();
+  }
 
   return (
     <StyledAverageSessions>

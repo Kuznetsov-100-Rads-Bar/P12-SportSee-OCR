@@ -11,64 +11,48 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import { USER_PERFORMANCE } from "../../data/MockedData";
+import { getDefaultActivities, useSportSeeAPI } from "../../services/useSportSeeAPI";
 
 const ACTIVITIES_ORDER_IN_CHART = [
-  {
-    value: "Cardio",
-    kind: 1,
-  },
-  {
-    value: "Energie",
-    kind: 2,
-  },
-  {
-    value: "Endurance",
-    kind: 3,
-  },
-  {
-    value: "Force",
-    kind: 4,
-  },
-  {
-    value: "Rapidité",
-    kind: 5,
-  },
-  {
-    value: "Intensité",
-    kind: 6,
-  },
+  "Intensité",
+  "Vitesse",
+  "Force",
+  "Endurance",
+  "Energie",
+  "Cardio",
 ];
 
 export default function ActivitiesChart({ userId }) {
   const [orderedActivities, setOrderedActivities] = useState([]);
 
-  const activities = USER_PERFORMANCE.find((data) => data.userId === userId);
+  const { data, isLoading, error } = useSportSeeAPI("activities", userId);
 
-  // useEffect(() => {
-  let array = [];
-  for (let activity of ACTIVITIES_ORDER_IN_CHART) {
-    for (let item of activities.data) {
-      if (item.kind === activity.kind) {
-        array.push({
-          activity: activity.value,
-          value: item.value,
-        });
+  let activities = data;
+
+  if (error || isLoading) {
+    activities = getDefaultActivities();
+  }
+
+  useEffect(() => {
+    let array = [];
+    for (let activity of ACTIVITIES_ORDER_IN_CHART) {
+      for (let item of activities) {
+        if (item.activity === activity) {
+          array.push({
+            activity: activity,
+            value: item.value,
+          });
+        }
       }
     }
-  }
-  // setOrderedActivities(array);
-  // }, [activities]);
-
-  //probleme de connexion ?
-  // https://meet.google.com/ekr-jxjj-mns
+    setOrderedActivities(array);
+  }, [activities]);
 
   return (
     <StyledActivitiesChart>
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart
-          // data={orderedActivities}
-          data={array}
+          data={orderedActivities}
           outerRadius={window.innerWidth > 1340 ? "70%" : "60%"}
         >
           <PolarGrid radialLines={false} />
