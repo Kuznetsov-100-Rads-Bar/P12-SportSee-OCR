@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-/*import './Sidebar.css';*/
 import iconMeditate from "../../assets/icons/meditate.svg";
 import iconSwim from "../../assets/icons/swim.svg";
 import iconBike from "../../assets/icons/bike.svg";

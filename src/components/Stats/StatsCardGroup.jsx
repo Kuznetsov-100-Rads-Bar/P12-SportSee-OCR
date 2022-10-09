@@ -1,10 +1,15 @@
+/* Importing the React library. */
 import React from 'react'
+/* A library that allows you to check the types of the props that you are passing to a component. */
 import PropTypes from "prop-types";
 
+/* Importing the StatsCard component from the StatsCard.js file. */
 import StatsCard from './StatsCard'
 
+/* Importing the styled-components library. */
 import styled from 'styled-components'
 
+/* Importing the `getDefaultKeyData` and `useSportSeeAPI` functions from the `useSportSeeAPI.js` file. */
 import { getDefaultKeyData, useSportSeeAPI } from '../../services/useSportSeeAPI'
 
 export default function StatsCardGroup({ userId }) {
@@ -42,6 +47,7 @@ export default function StatsCardGroup({ userId }) {
     )
 }
 
+/* A way to check the type of the props that you are passing to a component. */
 StatsCardGroup.propTypes = {
     userId: PropTypes.number.isRequired,
 };
