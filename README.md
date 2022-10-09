@@ -6,8 +6,9 @@ Getting Started with Projet SportSee
 
 Prerequisites
 
-.NodeJS (version 16.13.0)
-.npm
+. You need NodeJS (version 16.13.0)
+. Use npm
+.You need Git for clone this repository
 
 Installation
 
@@ -28,5 +29,7 @@ Example URL
 You can test the website display using the id 12 http://localhost:3000/user/12 
 
 Note:
+
+Warning, currently only two users have been mocked. They have userId 12 and 18
     .SportSee API only contains data for users with id 12 and 18.
     .user 18 has an alternative version of the chart "Sessions average duration", more relevant than the one on the Figma mock-up.
