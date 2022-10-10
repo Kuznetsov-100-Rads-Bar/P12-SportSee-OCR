@@ -2,7 +2,7 @@
 
 ## Code source du Projet 12 - Développez un tableau de bord d'analytics avec React du parcours Développeur d'application -JavaScript React d'OpenClassrooms.
 
-### Getting Started with Projet SportSee
+## Getting Started with Projet SportSee
 
 ### Prerequisites
 
