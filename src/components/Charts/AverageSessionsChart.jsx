@@ -7,13 +7,17 @@ import styled from "styled-components";
 import {
   Line,
   LineChart,
+  Rectangle,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 
-import { getDefaultAverageSessions, useSportSeeAPI } from "../../services/useSportSeeAPI";
+import {
+  getDefaultAverageSessions,
+  useSportSeeAPI,
+} from "../../services/useSportSeeAPI";
 
 export default function AverageSessionsChart({ userId }) {
   const { data, isLoading, error } = useSportSeeAPI("average-sessions", userId);
@@ -69,7 +73,7 @@ export default function AverageSessionsChart({ userId }) {
             content={<CustomTooltip />}
             cursor={{
               stroke: "rgba(0, 0, 0, 0.1)",
-              strokeWidth: 32,
+              strokeWidth: 20,
             }}
           />
         </LineChart>

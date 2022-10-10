@@ -33,9 +33,10 @@ export default function ScoreChart({ userId }) {
             outerRadius={80}
             startAngle={90}
             endAngle={450}
+            cornerRadius={30}
           >
             {pieData.map((item, index) => (
-              <Cell key={`cell-${index}`} fill={item.fillColor} radius="50%" />
+              <Cell key={`cell-${index}`} fill={item.fillColor} />
             ))}
           </Pie>
         </PieChart>
