@@ -39,4 +39,5 @@ __Warning__, currently only two users have been mocked. They have userId 12 and 
     .user 18 has an alternative version of the chart "Sessions average duration", more relevant than the one on the Figma mock-up.
     
 ## LEARN MORE
+You can read more
 [Recharts](https://recharts.org/en-US) 
