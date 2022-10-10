@@ -1,16 +1,16 @@
 # Projet 12 - SportSee 2022
 
-## Code source du Projet 12 - Développez un tableau de bord d'analytics avec React du parcours Développeur d'application -JavaScript React d'OpenClassrooms.
+### Code source du Projet 12 - Développez un tableau de bord d'analytics avec React du parcours Développeur d'application -JavaScript React d'OpenClassrooms.
 
-## Getting Started with Projet SportSee
+### Getting Started with Projet SportSee
 
-### Prerequisites
+## Prerequisites
 
 - You need NodeJS (version 16.13.0)
 - Use npm
 - You need Git for clone this repository
 
-### Installation
+## Installation
 
 #### __Front-End__
 - Clone the front repository with git clone [https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR](https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR)
@@ -22,7 +22,7 @@
 - while in the back-end repo, open and launch a Terminal and installing the project dependencies: npm install
 - Once ready launch the back-end on port 3030 with the command: npm start
 
-### WEB APP URL
+## WEB APP URL
 #### Example web application URL
 
 You can test the website
