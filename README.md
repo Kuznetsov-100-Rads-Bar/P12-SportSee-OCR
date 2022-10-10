@@ -22,7 +22,9 @@
 - while in the back-end repo, open and launch a Terminal and installing the project dependencies: npm install
 - Once ready launch the back-end on port 3030 with the command: npm start
 
-Example web application URL
+### WEB APP URL
+#### Example web application URL
+
 You can test the website
 The front-end with rendering now on the URL
 You can view your React application in web, you can go at http://localhost:3000 to view it in your browser.
