@@ -35,8 +35,8 @@ You can test the website display using the id 12 http://localhost:3000/user/12
 #### Note:
 
 __Warning__, currently only two users have been mocked. They have userId 12 and 18
-    - SportSee API only contains data for users with id 12 and 18.
-    - user 18 has an alternative version of the chart "Sessions average duration", more relevant than the one on the Figma mock-up.
+    .SportSee API only contains data for users with id 12 and 18.
+    .user 18 has an alternative version of the chart "Sessions average duration", more relevant than the one on the Figma mock-up.
     
 ## LEARN MORE
 You can read more
