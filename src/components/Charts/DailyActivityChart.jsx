@@ -97,11 +97,10 @@ export default function DailyActivityChart({ userId }) {
             fill="#ff0101"
             radius={[50, 50, 0, 0]}
           />
-          <Tooltip
-            content={<CustomTooltip />}
-            cursor={{
-              fill: "rgba(0, 0, 0, 0.1)",
-            }}
+          <Tooltip 
+            wrapperStyle={{ outline: "none" }}
+            cursor={{ fill: "rgba(0, 0, 0, 0.1)" }} viewBox={{ x: 0, y: 0 }} contentStyle={{ backgroundColor: '#E60000', padding: '8px 6px', border: 'none' }}
+          itemStyle={{ fontSize: '12px', color: 'white', fontWeight: 300 }} labelFormatter={(value) => ""} formatter={(value, name, props) => [name === 'kilogram' ? `${value}kg` : name === 'calories' ? `${value}Kcal` : null]} 
           />
         </BarChart>
       </ResponsiveContainer>
@@ -173,7 +172,7 @@ const DailyActivityChartHeaderLegendsInfoBullet = styled.div`
 `;
 
 const TooltipContainer = styled.div`
-  border: 2px solid rgba(255, 255, 255, 0.3);
+border: 2px solid rgba(255, 255, 255, 0.3);
 `;
 
 const TooltipLine = styled.div`
