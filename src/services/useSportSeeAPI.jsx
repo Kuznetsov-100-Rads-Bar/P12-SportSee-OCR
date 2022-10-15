@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { getActivitiesById, getAverageSessionsById, getDailyActivityById, getFirstNameById, getKeyDataById, getTodayScoreById } from "../data/MockedAPI";
 
 const BASE_URL = "http://localhost:3030";
 
@@ -11,15 +12,16 @@ const ACTIVITY_BY_KIND = {
   6: "Itensité",
 };
 
+// Enable or not the mocked api, 
+// if mocked api is disabled the real api is retrieved
+const isMockActive = true;
+
 /**
  * Hook used to extract data from SportSeeAPI to feed the dashboard.
  * @param {string} service
  * @param {string} userId
  * @returns {undefined|Object}
  */
-
-const isMockActive = false;
-
 export const useSportSeeAPI = (service, userId) => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -29,6 +31,13 @@ export const useSportSeeAPI = (service, userId) => {
 
   useEffect(() => {
     if (!endpoint) return;
+    if (isMockActive) {
+      const extractedData = extractMockedDataByService(service, userId);
+      setData(extractedData);
+      setIsLoading(false);
+      console.log(`Mocked API fetching for ${service}`);
+      return;
+    }
 
     setIsLoading(true);
 
@@ -38,11 +47,10 @@ export const useSportSeeAPI = (service, userId) => {
         const response = await fetch(url);
         const data = await response.json();
         const extractedData = extractDataByService(service, data);
-
         setData(extractedData);
+        console.log(`API fetching for ${service}`);
       } catch (err) {
         console.error(`An error occured while fetching ${endpoint} : ${err}`);
-
         setError(true);
       } finally {
         setIsLoading(false);
@@ -79,34 +87,57 @@ const getEndpointByService = (service, userId) => {
 
 /**
  * Factory appealing specialized functions to extract data for each service.
- * @param {string|Object} data
+ * @param {undefined|string|Object} data
  * @param {string} service
  * @returns {undefined|string|number|Object|array.Object}
  */
-const extractDataByService = (service, data) => {
-  if (data) {
-    switch (service) {
-      case "activities":
-        return getActivities(data.data.data);
-      case "average-sessions":
-        return getAverageSessions(data.data.sessions);
-      case "daily-activity":
-        return getDailyActivity(data.data.sessions);
-      case "firstName":
-        return getFirstName(data);
-      case "key-data":
-        return getKeyData(data);
-      case "today-score":
-        return getTodayScore(data);
-      default:
-        console.error(
-          `extractDataByService error: service "${service}" is not defined.`
-        );
-        return;
-    }
+const extractDataByService = (service, data = undefined) => {
+  switch (service) {
+    case "activities":
+      return getActivities(data.data.data);
+    case "average-sessions":
+      return getAverageSessions(data.data.sessions);
+    case "daily-activity":
+      return getDailyActivity(data.data.sessions);
+    case "firstName":
+      return getFirstName(data);
+    case "key-data":
+      return getKeyData(data);
+    case "today-score":
+      return getTodayScore(data);
+    default:
+      console.error(
+        `extractDataByService error: service "${service}" is not defined.`
+      );
+      return;
   }
-  console.error(`extractDataByService error: no data to process.`);
-  return;
+};
+/**
+ * Factory appealing specialized functions to extract mocked data for each service.
+ * @param {string} service
+ * @param {number} userId
+ * @returns {undefined|string|number|Object|array.Object}
+ */
+const extractMockedDataByService = (service, userId) => {
+  switch (service) {
+    case "activities":
+      return getActivitiesById(userId);
+    case "average-sessions":
+      return getAverageSessionsById(userId);
+    case "daily-activity":
+      return getDailyActivityById(userId);
+    case "firstName":
+      return getFirstNameById(userId);
+    case "key-data":
+      return getKeyDataById(userId);
+    case "today-score":
+      return getTodayScoreById(userId);
+    default:
+      console.error(
+        `extractDataByService error: service "${service}" is not defined.`
+      );
+      return;
+  }
 };
 
 /**
@@ -121,16 +152,15 @@ export const getDefaultActivities = () => {
       value: 0,
     });
   }
-
   return activities;
 };
 
 /**
- * @param {array.object} userData
+ * @param {undefined|array.object} userData
  * @returns {array.Object} data for activities chart
  */
 const getActivities = (userData) => {
-  const activities = [];
+  const activities = getDefaultActivities();
 
   if (userData) {
     for (let item of userData) {
@@ -139,9 +169,8 @@ const getActivities = (userData) => {
         value: item.value,
       });
     }
-    return activities;
   }
-  return getDefaultActivities();
+  return activities;
 };
 
 export const getDefaultAverageSessions = () => {
@@ -179,16 +208,17 @@ export const getDefaultAverageSessions = () => {
 };
 
 /**
- * @param {array.Object} userData
+ * @param {undefined|array.Object} userData
  * @returns {array.Object} data for average session chart
  */
 const getAverageSessions = (userData) => {
   let averageSessions = getDefaultAverageSessions();
 
-  for (let index in userData) {
-    averageSessions[index].sessionLength = userData[index].sessionLength;
+  if (userData) {
+    for (let index in userData) {
+      averageSessions[index].sessionLength = userData[index].sessionLength;
+    }
   }
-
   return averageSessions;
 };
 
@@ -219,13 +249,12 @@ export const getDefaultDailyActivity = () => {
 };
 
 /**
- * @param {array.Object} userData
+ * @param {ùndefined|array.Object} userData
  * @returns {array.Object} data for daily activity chart
  */
 const getDailyActivity = (userData) => {
+  const dailyActivity = getDefaultDailyActivity();
   if (userData) {
-    const dailyActivity = [];
-
     for (let item of userData) {
       // eslint-disable-next-line no-unused-vars
       const [yyyy, mm, dd] = item.day.split("-");
@@ -236,19 +265,20 @@ const getDailyActivity = (userData) => {
         calories: item.calories,
       });
     }
-    return dailyActivity;
   }
-  return getDefaultDailyActivity();
+  return dailyActivity;
 };
 
 /**
- * @param {string} userData
+ * @param {undefined|string} userData
  * @returns {string} user first name
  */
 const getFirstName = (userData) => {
-  return userData === "can not get user"
-    ? "unknown user"
-    : userData.data.userInfos.firstName;
+  const firstName = "unknown user";
+  if (userData && userData !== "can not get user") {
+    return userData.data.userInfos.firstName;
+  }
+  return firstName;
 };
 
 /**
@@ -264,21 +294,25 @@ export const getDefaultKeyData = () => {
 };
 
 /**
- * @param {(string|Object)} userData
+ * @param {(undefined|string|Object)} userData
  * @returns {Object} data for stats cards
  */
 const getKeyData = (userData) => {
-  return userData === "can not get user"
-    ? getDefaultKeyData()
-    : userData.data.keyData;
+  const keyData = getDefaultKeyData();
+  if (userData && userData !== "can not get user") {
+    return userData.data.keyData;
+  }
+  return keyData;
 };
 
 /**
- * @param {(string|Object)} userData
+ * @param {(undefined|string|Object)} userData
  * @returns data for score chart
  */
 const getTodayScore = (userData) => {
-  return userData === "can not get user"
-    ? 0
-    : userData.data.todayScore || userData.data.score;
+  const todayScore = 0;
+  if (userData && userData !== "can not get user") {
+    return userData.data.todayScore || userData.data.score;
+  }
+  return todayScore;
 };

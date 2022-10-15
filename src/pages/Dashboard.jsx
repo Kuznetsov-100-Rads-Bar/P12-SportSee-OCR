@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -14,7 +14,6 @@ import StatsCardGroup from "../components/Stats/StatsCardGroup";
 import { useSportSeeAPI } from "../services/useSportSeeAPI";
 
 export default function Dashboard() {
-  const navigate = useNavigate();
   const { id } = useParams();
   const parsedId = parseInt(id);
   const { data, isLoading, error } = useSportSeeAPI("firstName", parsedId);
@@ -22,7 +21,7 @@ export default function Dashboard() {
   let firstName = data;
 
   if (error || firstName === "unknown user") {
-    return navigate(`user/12`, {replace: true});
+    return <Navigate to='user/12' />
   }
 
   return (

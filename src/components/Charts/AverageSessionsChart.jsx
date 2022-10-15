@@ -71,10 +71,12 @@ export default function AverageSessionsChart({ userId }) {
           />
           <Tooltip
             content={<CustomTooltip />}
-            cursor={{
+            cursor={<CustomizedCursor />}
+            cursorStyle={{
               stroke: "rgba(0, 0, 0, 0.1)",
-              strokeWidth: 20,
+              strokeWidth: 20
             }}
+            wrapperStyle={{ outline: 'none' }}
           />
         </LineChart>
       </ResponsiveContainer>
@@ -88,6 +90,20 @@ const CustomTooltip = ({ active, payload }) => {
   }
   return null;
 };
+
+function CustomizedCursor({ points, width }) {
+  const X = points[0].x;
+  const Y = points[0].y;
+  return (
+    <Rectangle
+      width={width + 20}
+      height={400}
+      x={X - 9}
+      y={Y - 70}
+      style={{ background: "red", opacity: 0.1 }}
+    />
+  );
+}
 
 CustomTooltip.propTypes = {
   active: PropTypes.bool,
