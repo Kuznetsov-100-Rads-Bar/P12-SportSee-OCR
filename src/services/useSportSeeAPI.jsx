@@ -14,7 +14,7 @@ const ACTIVITY_BY_KIND = {
 
 // Enable or not the mocked api, 
 // if mocked api is disabled the real api is retrieved
-const isMockActive = true;
+const isMockActive = false;
 
 /**
  * Hook used to extract data from SportSeeAPI to feed the dashboard.
@@ -87,11 +87,11 @@ const getEndpointByService = (service, userId) => {
 
 /**
  * Factory appealing specialized functions to extract data for each service.
- * @param {undefined|string|Object} data
+ * @param {string|Object} data
  * @param {string} service
  * @returns {undefined|string|number|Object|array.Object}
  */
-const extractDataByService = (service, data = undefined) => {
+const extractDataByService = (service, data) => {
   switch (service) {
     case "activities":
       return getActivities(data.data.data);
@@ -160,7 +160,7 @@ export const getDefaultActivities = () => {
  * @returns {array.Object} data for activities chart
  */
 const getActivities = (userData) => {
-  const activities = getDefaultActivities();
+  const activities = [];
 
   if (userData) {
     for (let item of userData) {
@@ -169,8 +169,9 @@ const getActivities = (userData) => {
         value: item.value,
       });
     }
+    return activities;
   }
-  return activities;
+  return getDefaultActivities();
 };
 
 export const getDefaultAverageSessions = () => {
@@ -253,7 +254,7 @@ export const getDefaultDailyActivity = () => {
  * @returns {array.Object} data for daily activity chart
  */
 const getDailyActivity = (userData) => {
-  const dailyActivity = getDefaultDailyActivity();
+  const dailyActivity = [];
   if (userData) {
     for (let item of userData) {
       // eslint-disable-next-line no-unused-vars
@@ -265,8 +266,9 @@ const getDailyActivity = (userData) => {
         calories: item.calories,
       });
     }
+    return dailyActivity;
   }
-  return dailyActivity;
+  return getDefaultDailyActivity();
 };
 
 /**
