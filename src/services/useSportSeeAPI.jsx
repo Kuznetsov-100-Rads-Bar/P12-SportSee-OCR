@@ -174,6 +174,10 @@ const getActivities = (userData) => {
   return getDefaultActivities();
 };
 
+/**
+ * It returns an array of objects with the keys day and sessionLength.
+ * @returns An array of objects.
+ */
 export const getDefaultAverageSessions = () => {
   const averageSessions = [
     {

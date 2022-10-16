@@ -26,6 +26,12 @@ export const getDefaultKeyData = () => {
     };
 }
 
+
+/**
+ * This function returns an array of objects, each object containing a key of activity and a key of
+ * value, where the value of activity is a string and the value of value is a number.
+ * @returns An array of objects with the properties activity and value.
+ */
 const getDefaultActivities = () => {
     const activities = [];
     for (let key in ACITVITY_BY_KIND) {

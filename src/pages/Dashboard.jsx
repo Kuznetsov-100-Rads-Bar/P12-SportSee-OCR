@@ -13,6 +13,10 @@ import StatsCardGroup from "../components/Stats/StatsCardGroup";
 
 import { useSportSeeAPI } from "../services/useSportSeeAPI";
 
+/**
+ * It's a function that returns a component that displays a dashboard.
+ * @returns The data is being returned as a string.
+ */
 export default function Dashboard() {
   const { id } = useParams();
   const parsedId = parseInt(id);

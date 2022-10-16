@@ -84,6 +84,12 @@ export default function AverageSessionsChart({ userId }) {
   );
 }
 
+
+/**
+ * If the active prop is true and the payload prop is not null, return a TooltipContainer component
+ * with the value of the first element in the payload array.
+ * @returns A function that takes in an object with two properties: active and payload.
+ */
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload) {
     return <TooltipContainer>{`${payload[0].value} min`}</TooltipContainer>;
@@ -91,6 +97,14 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
+
+/**
+ * CustomizedCursor is a function that takes in two props, points and width, and returns a rectangle
+ * with a width of width + 20, a height of 400, an x value of X - 9, and a y value of Y - 70, and a
+ * style of a red background with an opacity of 0.1.
+ * @returns A Rectangle component with a width of width + 20, a height of 400, an x value of X - 9, a y
+ * value of Y - 70, and a style of background: "red", opacity: 0.1.
+ */
 function CustomizedCursor({ points, width }) {
   const X = points[0].x;
   const Y = points[0].y;

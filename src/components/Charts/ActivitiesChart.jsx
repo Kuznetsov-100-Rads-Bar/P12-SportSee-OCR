@@ -22,6 +22,11 @@ const ACTIVITIES_ORDER_IN_CHART = [
   "Cardio",
 ];
 
+/**
+ * It's a function that takes a userId as a prop and returns a chart that displays the user's activity
+ * data.
+ * @returns The return is a chart.
+ */
 export default function ActivitiesChart({ userId }) {
   const [orderedActivities, setOrderedActivities] = useState([]);
 

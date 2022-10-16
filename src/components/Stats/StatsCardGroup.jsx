@@ -12,6 +12,7 @@ import styled from 'styled-components'
 /* Importing the `getDefaultKeyData` and `useSportSeeAPI` functions from the `useSportSeeAPI.js` file. */
 import { getDefaultKeyData, useSportSeeAPI } from '../../services/useSportSeeAPI'
 
+/* A function that is returning a styled component. */
 export default function StatsCardGroup({ userId }) {
     const { data, isLoading, error } = useSportSeeAPI("key-data", userId);
 

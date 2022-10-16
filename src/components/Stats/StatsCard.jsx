@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 
 import styled from "styled-components";
 
+/**
+ * It returns a styled div with a styled div inside it, which contains an image and a styled div, which
+ * contains two styled divs
+ * @returns A styled component.
+ */
 export default function StatsCard({ value, name, unit }) {
   const bgColor =
     name === "Calories"
@@ -59,9 +64,10 @@ const StatsCardIconImage = styled.img`
   border-radius: 6px;
 `;
 const StatsCardValue = styled.h2`
-  font-weight: 500;
+  font-weight: 700;
   margin: 0;
   width: 100px;
+  color: #282d30;
 `;
 const StatsCardName = styled.p`
   padding: 0;
