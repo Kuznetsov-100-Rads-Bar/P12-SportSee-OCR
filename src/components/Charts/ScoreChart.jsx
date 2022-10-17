@@ -16,34 +16,31 @@ export default function ScoreChart({ userId }) {
     todayScore = 0;
   }
 
-  const pieData = [
-    { name: "completed", value: todayScore, fillColor: "#ff0101" },
-    { name: "uncompleted", value: 1 - todayScore, fillColor: "transparent" },
-  ];
-
   return (
     <StyledScoreChart>
       <ScoreChartTitle>Score</ScoreChartTitle>
       <ResponsiveContainer width="100%" height="100%">
-        <PieChart width={160} height={160}>
+        <PieChart width={'100%'} height={'100%'}>
           <Pie
-            data={pieData}
+            data={[
+              { value: todayScore },
+              { value: 1 - todayScore }
+            ]}
             dataKey="value"
-            innerRadius={70}
-            outerRadius={80}
+            innerRadius={'65%'}
+            cornerRadius={50}
+            outerRadius={'75%'}
             startAngle={90}
             endAngle={450}
-            cornerRadius={30}
           >
-            {pieData.map((item, index) => (
-              <Cell key={`cell-${index}`} fill={item.fillColor} />
-            ))}
+            <Cell fill={'#ff0101'} radius={50} />
+            <Cell fill={'transparent'} radius={50} />
           </Pie>
         </PieChart>
       </ResponsiveContainer>
       <ScoreChartKPI>
         <ScoreChartKPIValue>{`${todayScore * 100}%`}</ScoreChartKPIValue>
-        <ScoreChartNewLine />
+        {/* <ScoreChartNewLine /> */}
         de votre
         <ScoreChartNewLine />
         objectif
@@ -63,8 +60,12 @@ const StyledScoreChart = styled.div`
   align-items: center;
   background: #fbfbfb;
   border-radius: 5px;
-  height: 263px;
-  width: 258px;
+  width: 20vh;
+  aspect-ratio: 1;
+  
+  @media screen and (min-width: 1280px) {
+    width: 25vh;
+  }
 `;
 const ScoreChartTitle = styled.h2`
   font-family: "Roboto", sans-serif;
@@ -72,19 +73,31 @@ const ScoreChartTitle = styled.h2`
   font-size: 1rem;
   color: #20253a;
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 12px;
+  left: 16px;
   margin: 0;
 `;
 const ScoreChartNewLine = styled.br``;
 const ScoreChartKPI = styled.div`
+  display: flex;
+  flex-direction: column;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  margin: 0;
+  font-size: 14px;
+  color: #74798c;
+  font-weight: 500;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  line-height: 20px;
 `;
 const ScoreChartKPIValue = styled.div`
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  font-size: 1.625rem;
+  margin: 0;
   color: #282d30;
+  font-weight: 700;
   text-align: center;
+  font-size: 18px;
 `;

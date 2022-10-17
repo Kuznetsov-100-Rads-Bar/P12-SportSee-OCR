@@ -1,16 +1,24 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
+import { useState } from "react";
+import { useEffect } from "react";
 import Dashboard from "./pages/Dashboard";
+import { useSportSeeAPI } from "./services/useSportSeeAPI";
+import { useParams } from 'react-router-dom';
 
 export default function App() {
+  const params = useParams();
+  const userId = params.id;
+  const [activities, setActivities] = useState(useSportSeeAPI('activities', userId));
+  const [averageSessions, setAverageSessions] = useState({});
+  const [dailyActivities, setDailyActivities] = useState({});
+  const [firstName, setFirstName] = useState({});
+  const [keyData, setKeyData] = useState({});
+  const [todayScore, setTodayScore] = useState({});
+
+  useEffect(() => {
+    console.log(activities)
+  }, [])
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/user/:id" element={<Dashboard />} />
-        <Route index element={<Dashboard />} />
-        <Route path="*" element={<Navigate to="/user/12" />} />
-      </Routes>
-    </BrowserRouter>
+    <Dashboard />
   );
 }

@@ -150,7 +150,7 @@ export const getDailyActivityById = (userId) => {
         const [yyyy, mm, dd] = item.day.split("-");
 
         dailyActivity.push({
-          day: `${dd}/${mm}`,
+          day: `${dd.toString().charAt(0) === '0' ? dd.toString().replace('0', '') : dd.toString()}`,
           kilogram: item.kilogram,
           calories: item.calories,
         });

@@ -36,7 +36,7 @@ const SidebarContainer = styled.div`
   background-color: #020203;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   width: 117px;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 108px);
   display: flex;
   flex-direction: column;
   align-items: center;

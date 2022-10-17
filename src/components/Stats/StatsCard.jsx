@@ -19,13 +19,13 @@ export default function StatsCard({ value, name, unit }) {
           : "rgba(253, 81, 129, 0.1);";
   return (
     <StyledStatsCard>
-      <StatsCardIcon>
+      {/* <StatsCardIcon> */}
         <StatsCardIconImage
           bgColor={bgColor}
           src={`${process.env.PUBLIC_URL
             }/assets/icons/${name.toLowerCase()}.svg`}
         />
-      </StatsCardIcon>
+      {/* </StatsCardIcon> */}
       <StatsCardWrapper>
         <StatsCardValue>
           {value}
@@ -44,34 +44,42 @@ StatsCard.propTypes = {
 }
 
 const StyledStatsCard = styled.div`
-  background-color: #fbfbfb;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  height: 124px;
-  width: 258px;
-  border-radius: 5px;
-  padding: 0 30px;
+    display: flex;
+    align-items: center;
+    padding: 2vh 3vh;
+    background: #fbfbfb;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+    border-radius: 5px;
 `;
-const StatsCardIcon = styled.div``;
-const StatsCardWrapper = styled.div``;
+const StatsCardIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+`;
+const StatsCardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 24px;
+`;
 const StatsCardIconImage = styled.img`
-  padding: 20px;
-  display: block;
-  width: 22px;
-  height: 22px;
+  padding: 21px;
+  width: 24px;
   background-color: ${(props) => props.bgColor};
   border-radius: 6px;
+  margin: 0;
 `;
 const StatsCardValue = styled.h2`
-  font-weight: 700;
-  margin: 0;
-  width: 100px;
-  color: #282d30;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 20px;
+    color: #282D30;
 `;
 const StatsCardName = styled.p`
-  padding: 0;
   margin: 0;
+  padding: 0;
   font-weight: 500;
-  color: #74798c;
+  font-size: 14px;
+  color: #74798C;
 `;

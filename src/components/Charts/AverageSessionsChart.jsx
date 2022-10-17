@@ -132,8 +132,12 @@ const StyledAverageSessions = styled.div`
   position: relative;
   background: red;
   border-radius: 5px;
-  height: 263px;
-  width: 258px;
+  width: 20vh;
+  aspect-ratio: 1;
+  
+  @media screen and (min-width: 1280px) {
+    width: 25vh;
+  }
 `;
 const AverageSessionsTitle = styled.h2`
   position: absolute;

@@ -90,6 +90,10 @@ ActivitiesChart.propTypes = {
 const StyledActivitiesChart = styled.div`
   background: #2b2d30;
   border-radius: 5px;
-  height: 263px;
-  width: 258px;
+  width: 20vh;
+  aspect-ratio: 1;
+  
+  @media screen and (min-width: 1280px) {
+    width: 25vh;
+  }
 `;

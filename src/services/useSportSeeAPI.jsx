@@ -261,7 +261,7 @@ export const getDefaultDailyActivity = () => {
 };
 
 /**
- * @param {ùndefined|array.Object} userData
+ * @param {undefined|array.Object} userData
  * @returns {array.Object} data for daily activity chart
  */
 const getDailyActivity = (userData) => {
@@ -272,7 +272,7 @@ const getDailyActivity = (userData) => {
       const [yyyy, mm, dd] = item.day.split("-");
 
       dailyActivity.push({
-        day: `${dd}/${mm}`,
+        day: `${dd.toString().charAt(0) === '0' ? dd.toString().replace('0', '') : dd.toString()}`,
         kilogram: item.kilogram,
         calories: item.calories,
       });

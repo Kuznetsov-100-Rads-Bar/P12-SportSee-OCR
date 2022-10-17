@@ -57,5 +57,7 @@ StatsCardGroup.propTypes = {
 const StyledStatsCardGroup = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 30px;
+  flex: 1;
 `;

@@ -71,15 +71,17 @@ const StyledDashboard = styled.div``;
 const DashboardContainer = styled.div`
   display: flex;
   gap: 30px;
+  margin-right: 30px;
 `;
 
 const DashboardLeft = styled.aside``;
 
 const DashboardRight = styled.div`
   padding: 30px 30px 0 30px;
-
+  width: 100%;
   @media screen and (min-width: 1024px) {
     margin: 0 auto;
+
   }
 `;
 
@@ -104,22 +106,29 @@ const DashboardSlogan = styled.p`
 
 const DashboardWrapper = styled.div`
   @media screen and (min-width: 1024px) {
-    display: flex;
-    align-items: center;
-    gap: 30px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 3fr 1fr;
+    gap: 50px;
+    margin-top: 32px;
   }
 `;
 const DashboardCharts = styled.div`
+  width: 100%;
   @media screen and (min-width: 1024px) {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    margin: 60px 0 0 0;
+    align-content: space-between;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    height: 100%;
+    gap: 28px;
   }
 `;
 const DailyChartsWrapper = styled.div`
   @media screen and (min-width: 1024px) {
     display: flex;
     justify-content: space-between;
+    flex-wrap: nowrap;
   }
 `;
