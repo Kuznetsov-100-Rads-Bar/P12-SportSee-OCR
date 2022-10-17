@@ -55,7 +55,7 @@ export const useSportSeeAPI = (service, userId) => {
         const data = await response.json();
         const extractedData = extractDataByService(service, data);
         setData(extractedData);
-        // console.log(`API fetching for ${service}`);
+        //console.log(`API fetching for ${service}`);
       } catch (err) {
         console.error(`An error occured while fetching ${endpoint} : ${err}`);
         setError(true);
