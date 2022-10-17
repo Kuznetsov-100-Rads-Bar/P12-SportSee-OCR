@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
 
-console.log(process.env.REACT_APP_IS_MOCK_ACTIVE);
 export default function App() {
   return (
     <BrowserRouter>
