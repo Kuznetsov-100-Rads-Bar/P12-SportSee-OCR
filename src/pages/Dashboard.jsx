@@ -25,7 +25,7 @@ export default function Dashboard() {
   let firstName = data;
 
   if (error || firstName === "unknown user") {
-    return <Navigate to='user/12' />
+    return <Navigate to="user/12" />;
   }
 
   return (
@@ -44,7 +44,9 @@ export default function Dashboard() {
               </DashboardProfileSpan>
             </DashboardProfile>
             <DashboardSlogan>
-              {isLoading || firstName === "unknown user" ? null : "Félicitation ! Vous avez explosé vos objectifs hier 👏"}
+              {isLoading || firstName === "unknown user"
+                ? null
+                : "Félicitation ! Vous avez explosé vos objectifs hier 👏"}
             </DashboardSlogan>
           </DashboardAbout>
           <DashboardWrapper>

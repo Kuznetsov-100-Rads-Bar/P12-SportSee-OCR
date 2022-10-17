@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { getActivitiesById, getAverageSessionsById, getDailyActivityById, getFirstNameById, getKeyDataById, getTodayScoreById } from "../data/MockedAPI";
+import {
+  getActivitiesById,
+  getAverageSessionsById,
+  getDailyActivityById,
+  getFirstNameById,
+  getKeyDataById,
+  getTodayScoreById,
+} from "../data/MockedAPI";
 
 const BASE_URL = "http://localhost:3030";
 
@@ -12,9 +19,9 @@ const ACTIVITY_BY_KIND = {
   6: "Itensité",
 };
 
-// Enable or not the mocked api, 
+// Enable or not the mocked api,
 // if mocked api is disabled the real api is retrieved
-const isMockActive = false;
+const isMockActive = process.env.REACT_APP_IS_MOCK_ACTIVE === "true";
 
 /**
  * Hook used to extract data from SportSeeAPI to feed the dashboard.

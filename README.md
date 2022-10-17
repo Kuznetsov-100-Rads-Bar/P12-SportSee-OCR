@@ -42,6 +42,8 @@ You can test the website display using the id 12 http://localhost:3000/user/12
 - SportSee API only contains data for users with id 12 and 18.
 - user 18 has an alternative version of the chart "Sessions average duration", more relevant than the one on the Figma mock-up.
 
+- In the .env file you can use the mocked API or the real API, just change "REACT_APP_IS_MOCK_ACTIVE"
+
 ## LEARN MORE
 
 You can read more
