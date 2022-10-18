@@ -1,7 +1,12 @@
 import axios from "axios";
 import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_PERFORMANCE } from "../data/MockedData";
 
+/* It's a class that handles the API requests */
 export class apiHandler {
+/**
+ * This function is a constructor that takes a userId as a parameter and sets the userId to the userId
+ * passed in, sets the isMockActive to true, and sets the baseUrl to localhost:3030.
+ */
   constructor(userId) {
     this.userId = parseInt(userId);
     this.isMockActive = process.env.REACT_APP_IS_MOCK_ACTIVE || "true";
@@ -9,6 +14,8 @@ export class apiHandler {
 
     // console.log("api handler started");
   }
+/* It's a function that takes two parameters, apiEndpoint and mockedEndpoint. It's a function that
+sends a request to the API and returns the response. */
   sendRequest = async ({ apiEndpoint, mockedEndpoint }) => {
     let response = {};
 
@@ -23,16 +30,20 @@ export class apiHandler {
     return response;
   }
 
+/* It's a function that takes no parameters. It's a function that sends a request to the API and
+returns the response. */
   getUserInfos = async () => {
     const response = await this.sendRequest({
       apiEndpoint: `/`,
       mockedEndpoint: USER_MAIN_DATA
     });
 
+/* It's checking if the response is empty or not. If it's empty, it's returning an empty object. */
     if (!response || Object.keys(response).length <= 0) {
       return {};
     }
 
+/* It's a constant that contains the data that will be returned. */
     const data = {
       firstName: response.userInfos.firstName,
       todayScore: response.todayScore || response.score,
@@ -42,6 +53,8 @@ export class apiHandler {
     return data;
   }
 
+/* It's a function that takes no parameters. It's a function that sends a request to the API and
+returns the response. */
   getDailyActivities = async () => {
     const response = await this.sendRequest({
       apiEndpoint: `/activity`,
@@ -99,6 +112,7 @@ export class apiHandler {
         }
       }
 
+/* It's reversing the data. */
       return data.reverse();
     }
   }
@@ -120,6 +134,12 @@ export class apiHandler {
       /* It's a loop that iterates over the response and pushes the data to the formattedData array. */
       for (const item of response.sessions) {
         // console.log('item', item)
+   /* It's a ternary operator that checks if the item.day is equal to 1, if it's true, it's returning
+   L, if it's false, it's checking if the item.day is equal to 2 or 3, if it's true, it's returning
+   M, if it's false, it's checking if the item.day is equal to 4, if it's true, it's returning J, if
+   it's false, it's checking if the item.day is equal to 5, if it's true, it's returning V, if it's
+   false, it's checking if the item.day is equal to 6, if it's true, it's returning S, if it's
+   false, it's returning D. */
         const format = {
           day: item.day === 1 ? 'L' :
             item.day === 2 || item.day === 3 ? 'M' :
@@ -128,6 +148,7 @@ export class apiHandler {
                   item.day === 6 ? 'S' : 'D',
           sessionLength: item.sessionLength
         }
+/* It's pushing the format to the data array. */
         data.push(format);
       }
     }

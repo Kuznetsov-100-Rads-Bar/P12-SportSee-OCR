@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
+/* A function that returns a styled component. */
 export default function ScoreChart(props) {
   const todayScore = parseFloat(props.todayScore);
   

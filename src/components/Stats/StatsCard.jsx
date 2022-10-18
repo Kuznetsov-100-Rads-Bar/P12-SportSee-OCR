@@ -4,13 +4,14 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 /**
- * It returns a styled div with a styled div inside it, which contains an image and a styled div, which
- * contains two styled divs
- * @returns A styled component.
+ * It returns a styled div with an image and a value
+ * @returns A component that is a styled div with a styled div inside of it.
  */
 export default function StatsCard(props) {
+/* Destructuring the props object. */
   const { value, name, unit } = props;
 
+/* A ternary operator. It is a shorthand if/else statement. */
   const bgColor =
     name === "Calories"
       ? "rgba(235, 64, 52, 0.1);"
@@ -39,6 +40,7 @@ export default function StatsCard(props) {
   );
 }
 
+/* A propTypes object. It is used to validate the props that are passed to the component. */
 StatsCard.propTypes = {
   value: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,

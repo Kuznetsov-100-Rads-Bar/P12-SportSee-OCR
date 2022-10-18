@@ -6,6 +6,11 @@ import iconBike from "../../assets/icons/bike.svg";
 import iconDumbbell from "../../assets/icons/fitness.svg";
 import { Link } from "react-router-dom";
 
+/**
+ * It returns a styled sidebar with a sidebar container that contains a sidebar links section and a
+ * sidebar copyright section.
+ * @returns A styled component.
+ */
 export default function Sidebar() {
   return (
     <StyledSidebar>

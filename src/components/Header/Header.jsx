@@ -3,6 +3,14 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/icons/LogoSportSee.png';
 
+/**
+ * It returns a styled header, which contains a navbar container, which contains a navbar logo, which
+ * contains a navbar menu links, which contains a navbar menu link.</code>
+ * 
+ * I'm trying to make a navbar with React.js.
+ * I'm using styled-components to style my navbar.
+ * I'm using react-router-dom to make my navbar links work.
+ */
 export default function Header() {
   return (
     <StyledHeader> 

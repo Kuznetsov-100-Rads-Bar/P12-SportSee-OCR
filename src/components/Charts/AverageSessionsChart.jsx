@@ -14,6 +14,8 @@ import {
   YAxis,
 } from "recharts";
 
+/* A function that takes in a prop called props and returns a styled component called
+StyledAverageSessions. */
 export default function AverageSessionsChart(props) {
   let { averageSessions } = props;
 

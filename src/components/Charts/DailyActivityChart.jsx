@@ -14,6 +14,7 @@ import {
 
 import styled from "styled-components";
 
+/* A function that returns a component. */
 export default function DailyActivityChart(props) {
   const { dailyActivities } = props;
 

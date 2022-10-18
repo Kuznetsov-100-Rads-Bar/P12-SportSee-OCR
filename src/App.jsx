@@ -6,6 +6,12 @@ import { useParams } from 'react-router-dom';
 import { apiHandler } from "./services/apiHandler.service";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * I'm using the useEffect hook to fetch data from an API and then I'm using the useState hook to set
+ * the data to a state.
+ * </code>
+ * @returns The userInfos, dailyActivities, averageSessions, and activities are being returned.
+ */
 export default function App() {
   const params = useParams();
   const userId = params.id;

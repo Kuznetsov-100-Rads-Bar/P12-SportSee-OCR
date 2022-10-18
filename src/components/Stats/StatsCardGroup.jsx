@@ -9,7 +9,8 @@ import StatsCard from './StatsCard'
 /* Importing the styled-components library. */
 import styled from 'styled-components'
 
-/* A function that is returning a styled component. */
+
+/* A function that returns a styled component. */
 export default function StatsCardGroup(props) {
     const keyData = props.keyData;
 

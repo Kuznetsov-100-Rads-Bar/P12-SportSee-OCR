@@ -16,6 +16,11 @@ import {
  * data.
  * @returns The return is a chart.
  */
+/**
+ * It's a function that returns a styled div that contains a responsive container that contains a radar
+ * chart that contains a polar grid, a polar angle axis, and a radar.
+ * @returns A React component.
+ */
 export default function ActivitiesChart(props) {
   let { performances } = props;
 
