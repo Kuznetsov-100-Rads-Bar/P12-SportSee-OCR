@@ -9,18 +9,10 @@ import StatsCard from './StatsCard'
 /* Importing the styled-components library. */
 import styled from 'styled-components'
 
-/* Importing the `getDefaultKeyData` and `useSportSeeAPI` functions from the `useSportSeeAPI.js` file. */
-import { getDefaultKeyData, useSportSeeAPI } from '../../services/useSportSeeAPI'
-
 /* A function that is returning a styled component. */
-export default function StatsCardGroup({ userId }) {
-    const { data, isLoading, error } = useSportSeeAPI("key-data", userId);
+export default function StatsCardGroup(props) {
+    const keyData = props.keyData;
 
-    let keyData = data;
-
-    if (error || isLoading) {
-        keyData = getDefaultKeyData();
-    }
 
     return (
         <StyledStatsCardGroup>
@@ -50,7 +42,12 @@ export default function StatsCardGroup({ userId }) {
 
 /* A way to check the type of the props that you are passing to a component. */
 StatsCardGroup.propTypes = {
-    userId: PropTypes.number.isRequired,
+    keyData: PropTypes.shape({
+        calorieCount: PropTypes.number.isRequired,
+        carbohydrateCount: PropTypes.number.isRequired,
+        lipidCount: PropTypes.number.isRequired,
+        proteinCount: PropTypes.number.isRequired
+    }).isRequired
 };
 
 

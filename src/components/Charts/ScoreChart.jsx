@@ -5,17 +5,9 @@ import styled from "styled-components";
 
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
-import { useSportSeeAPI } from "../../services/useSportSeeAPI";
-
-export default function ScoreChart({ userId }) {
-  const { data, isLoading, error } = useSportSeeAPI("today-score", userId);
-
-  let todayScore = data;
-
-  if (error || isLoading) {
-    todayScore = 0;
-  }
-
+export default function ScoreChart(props) {
+  const todayScore = parseFloat(props.todayScore);
+  
   return (
     <StyledScoreChart>
       <ScoreChartTitle>Score</ScoreChartTitle>
@@ -50,7 +42,7 @@ export default function ScoreChart({ userId }) {
 }
 
 ScoreChart.propTypes = {
-  userId: PropTypes.number.isRequired,
+  todayScore: PropTypes.number.isRequired,
 };
 
 const StyledScoreChart = styled.div`

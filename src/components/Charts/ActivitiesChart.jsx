@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import styled from "styled-components";
 
@@ -11,53 +11,19 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import { getDefaultActivities, useSportSeeAPI } from "../../services/useSportSeeAPI";
-
-const ACTIVITIES_ORDER_IN_CHART = [
-  "Intensité",
-  "Vitesse",
-  "Force",
-  "Endurance",
-  "Energie",
-  "Cardio",
-];
-
 /**
  * It's a function that takes a userId as a prop and returns a chart that displays the user's activity
  * data.
  * @returns The return is a chart.
  */
-export default function ActivitiesChart({ userId }) {
-  const [orderedActivities, setOrderedActivities] = useState([]);
-
-  const { data, isLoading, error } = useSportSeeAPI("activities", userId);
-
-  let activities = data;
-
-  if (error || isLoading) {
-    activities = getDefaultActivities();
-  }
-
-  useEffect(() => {
-    let array = [];
-    for (let activity of ACTIVITIES_ORDER_IN_CHART) {
-      for (let item of activities) {
-        if (item.activity === activity) {
-          array.push({
-            activity: activity,
-            value: item.value,
-          });
-        }
-      }
-    }
-    setOrderedActivities(array);
-  }, [activities]);
+export default function ActivitiesChart(props) {
+  let { performances } = props;
 
   return (
     <StyledActivitiesChart>
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart
-          data={orderedActivities}
+          data={performances}
           outerRadius={window.innerWidth > 1340 ? "70%" : "60%"}
         >
           <PolarGrid radialLines={false} />
@@ -84,7 +50,10 @@ export default function ActivitiesChart({ userId }) {
 }
 
 ActivitiesChart.propTypes = {
-  userId: PropTypes.number.isRequired,
+  performances: PropTypes.arrayOf(PropTypes.shape({
+    activity: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired
+  }).isRequired).isRequired,
 };
 
 const StyledActivitiesChart = styled.div`

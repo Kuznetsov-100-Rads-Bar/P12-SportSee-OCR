@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams, Navigate } from "react-router-dom";
 
 import styled from "styled-components";
 
@@ -10,23 +9,15 @@ import DailyActivityChart from "../components/Charts/DailyActivityChart";
 import ScoreChart from "../components/Charts/ScoreChart";
 import Sidebar from "../components/Sidebar/Sidebar";
 import StatsCardGroup from "../components/Stats/StatsCardGroup";
-
-import { useSportSeeAPI } from "../services/useSportSeeAPI";
+import PropTypes from 'prop-types'
 
 /**
  * It's a function that returns a component that displays a dashboard.
  * @returns The data is being returned as a string.
  */
-export default function Dashboard() {
-  const { id } = useParams();
-  const parsedId = parseInt(id);
-  const { data, isLoading, error } = useSportSeeAPI("firstName", parsedId);
-
-  let firstName = data;
-
-  if (error || firstName === "unknown user") {
-    return <Navigate to="user/12" />;
-  }
+export default function Dashboard(props) {
+  const { dailyActivities, averageSessions, activities } = props;
+  const { firstName, todayScore, keyData } = props.userInfos;
 
   return (
     <StyledDashboard>
@@ -40,30 +31,41 @@ export default function Dashboard() {
             <DashboardProfile>
               Bonjour{" "}
               <DashboardProfileSpan>
-                {!isLoading && firstName}
+                {firstName}
               </DashboardProfileSpan>
             </DashboardProfile>
             <DashboardSlogan>
-              {isLoading || firstName === "unknown user"
-                ? null
-                : "Félicitation ! Vous avez explosé vos objectifs hier 👏"}
+              Félicitation ! Vous avez explosé vos objectifs hier 👏
             </DashboardSlogan>
           </DashboardAbout>
           <DashboardWrapper>
             <DashboardCharts>
-              <DailyActivityChart userId={parsedId} />
+              <DailyActivityChart dailyActivities={dailyActivities} />
               <DailyChartsWrapper>
-                <AverageSessionsChart userId={parsedId} />
-                <ActivitiesChart userId={parsedId} />
-                <ScoreChart userId={parsedId} />
+                <AverageSessionsChart averageSessions={averageSessions} />
+                <ActivitiesChart performances={activities} />
+                <ScoreChart todayScore={todayScore} />
               </DailyChartsWrapper>
             </DashboardCharts>
-            <StatsCardGroup userId={parsedId} />
+            <StatsCardGroup keyData={keyData} />
           </DashboardWrapper>
         </DashboardRight>
       </DashboardContainer>
     </StyledDashboard>
   );
+}
+
+Dashboard.propTypes = {
+  userInfos: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    keyData: PropTypes.shape({
+      calorieCount: PropTypes.number.isRequired,
+      carbohydrateCount: PropTypes.number.isRequired,
+      lipidCount: PropTypes.number.isRequired,
+      proteinCount: PropTypes.number.isRequired
+    }).isRequired,
+    todayScore: PropTypes.number.isRequired
+  }).isRequired
 }
 
 const StyledDashboard = styled.div``;

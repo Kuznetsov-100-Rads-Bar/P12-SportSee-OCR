@@ -8,7 +8,9 @@ import styled from "styled-components";
  * contains two styled divs
  * @returns A styled component.
  */
-export default function StatsCard({ value, name, unit }) {
+export default function StatsCard(props) {
+  const { value, name, unit } = props;
+
   const bgColor =
     name === "Calories"
       ? "rgba(235, 64, 52, 0.1);"
@@ -19,13 +21,13 @@ export default function StatsCard({ value, name, unit }) {
           : "rgba(253, 81, 129, 0.1);";
   return (
     <StyledStatsCard>
-      {/* <StatsCardIcon> */}
+      <StatsCardIcon>
         <StatsCardIconImage
           bgColor={bgColor}
           src={`${process.env.PUBLIC_URL
             }/assets/icons/${name.toLowerCase()}.svg`}
         />
-      {/* </StatsCardIcon> */}
+      </StatsCardIcon>
       <StatsCardWrapper>
         <StatsCardValue>
           {value}

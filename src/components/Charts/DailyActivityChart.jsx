@@ -14,19 +14,8 @@ import {
 
 import styled from "styled-components";
 
-import {
-  getDefaultDailyActivity,
-  useSportSeeAPI,
-} from "../../services/useSportSeeAPI";
-
-export default function DailyActivityChart({ userId }) {
-  const { data, isLoading, error } = useSportSeeAPI("daily-activity", userId);
-
-  let dailyActivity = data;
-
-  if (error || isLoading) {
-    dailyActivity = getDefaultDailyActivity();
-  }
+export default function DailyActivityChart(props) {
+  const { dailyActivities } = props;
 
   return (
     <StyledDailyActivityChart>
@@ -55,7 +44,7 @@ export default function DailyActivityChart({ userId }) {
             margin={{ top: 0, right: 48, bottom: 16, left: 48 }}
             barGap={8}
             barCategoryGap="35%"
-            data={dailyActivity}>
+            data={dailyActivities}>
 
             {/* data={dailyActivity}
             margin={{ top: 80, right: 48, bottom: 32, left: 48 }}
@@ -68,6 +57,11 @@ export default function DailyActivityChart({ userId }) {
             />
             <XAxis
               dataKey={"day"}
+              tickFormatter={(value) => {
+                const splittedValue = value.split('-');
+                return splittedValue[2].charAt(0) === '0' ? splittedValue[2].replace('0', '')
+                  : splittedValue[2]
+              }}
               dy={12}
               padding={{ left: -48, right: -48 }}
               stroke="#9b9eac"
@@ -132,7 +126,11 @@ export default function DailyActivityChart({ userId }) {
 }
 
 DailyActivityChart.propTypes = {
-  userId: PropTypes.number.isRequired,
+  dailyActivities: PropTypes.arrayOf(PropTypes.shape({
+    calories: PropTypes.number.isRequired,
+    day: PropTypes.string.isRequired,
+    kilogram: PropTypes.number.isRequired
+  }).isRequired).isRequired
 };
 
 const CustomTooltip = ({ active, payload }) => {

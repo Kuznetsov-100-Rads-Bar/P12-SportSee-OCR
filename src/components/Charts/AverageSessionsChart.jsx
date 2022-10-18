@@ -14,19 +14,8 @@ import {
   YAxis,
 } from "recharts";
 
-import {
-  getDefaultAverageSessions,
-  useSportSeeAPI,
-} from "../../services/useSportSeeAPI";
-
-export default function AverageSessionsChart({ userId }) {
-  const { data, isLoading, error } = useSportSeeAPI("average-sessions", userId);
-
-  let averageSessions = data;
-
-  if (error || isLoading) {
-    averageSessions = getDefaultAverageSessions();
-  }
+export default function AverageSessionsChart(props) {
+  let { averageSessions } = props;
 
   return (
     <StyledAverageSessions>
@@ -59,7 +48,7 @@ export default function AverageSessionsChart({ userId }) {
           />
           <Line
             dataKey="sessionLength"
-            type={`${userId === "18" ? "step" : "monotone"}`}
+            type={"monotone"}
             stroke="rgba(255, 255, 255, 0.6)"
             strokeWidth={2}
             dot={false}
@@ -84,6 +73,12 @@ export default function AverageSessionsChart({ userId }) {
   );
 }
 
+AverageSessionsChart.propTypes = {
+  averageSessions: PropTypes.arrayOf(PropTypes.shape({
+    day: PropTypes.string.isRequired,
+    sessionLength: PropTypes.number.isRequired
+  }).isRequired).isRequired
+};
 
 /**
  * If the active prop is true and the payload prop is not null, return a TooltipContainer component
