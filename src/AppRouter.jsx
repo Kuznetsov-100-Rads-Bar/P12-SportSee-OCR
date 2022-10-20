@@ -16,6 +16,7 @@ export default function AppRouter() {
             <Routes>
                 <Route path="/user/:id" element={<App />} />
                 <Route path="/404" element={<pre>404 Page</pre>} />
+                {/* Redirecting to the 404 page if the URL matches any other pattern. */}
                 <Route path="*" element={<Navigate to={'/404'} replace />} />
             </Routes>
         </BrowserRouter>

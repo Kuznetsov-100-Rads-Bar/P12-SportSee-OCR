@@ -104,6 +104,11 @@ const DashboardProfileSpan = styled.span`
 const DashboardSlogan = styled.p`
   margin: 20px 0 0 0;
   font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+  }
 `;
 
 const DashboardWrapper = styled.div`

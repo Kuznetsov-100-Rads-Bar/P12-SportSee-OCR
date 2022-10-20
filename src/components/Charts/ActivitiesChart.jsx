@@ -38,7 +38,7 @@ export default function ActivitiesChart(props) {
             dy={4}
             tickLine={false}
             tick={{
-              fontSize: 12,
+              fontSize: 10,
               fontWeight: 500,
             }}
           />

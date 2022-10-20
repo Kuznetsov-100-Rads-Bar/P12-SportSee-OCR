@@ -142,9 +142,12 @@ const AverageSessionsTitle = styled.h2`
   left: 20px;
   margin: 0;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: 500;
   font-family: "Roboto", sans-serif;
+  @media screen and (min-width: 1280px) {
+    font-size: 1rem;
+  }
 `;
 const AverageSessionsNewLine = styled.br``;
 const TooltipContainer = styled.div`

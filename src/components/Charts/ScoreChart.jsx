@@ -63,12 +63,15 @@ const StyledScoreChart = styled.div`
 const ScoreChartTitle = styled.h2`
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-size: 1rem;
   color: #20253a;
   position: absolute;
   top: 12px;
   left: 16px;
   margin: 0;
+  font-size: 0.8rem;
+  @media screen and (min-width: 1280px) {
+    font-size: 1rem;
+  }
 `;
 const ScoreChartNewLine = styled.br``;
 const ScoreChartKPI = styled.div`
@@ -80,7 +83,7 @@ const ScoreChartKPI = styled.div`
   transform: translate(-50%, -50%);
   text-align: center;
   margin: 0;
-  font-size: 14px;
+  font-size: 11px;
   color: #74798c;
   font-weight: 500;
   text-align: center;
@@ -92,5 +95,5 @@ const ScoreChartKPIValue = styled.div`
   color: #282d30;
   font-weight: 700;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
 `;
