@@ -39,6 +39,11 @@ You can test the website display using the id 12 http://localhost:3000/user/12
 
 **Warning**, currently only two users have been mocked. They have userId 12 and 18
 
+-To get started, first launch the front-end and you will have a 404 page and a link below that will take you to [localhost3000/user/12](localhost3000/user/12)
+
+
+## WARNING! Please start and launch the Back-End [P9-front-end-dashboard/](P9-front-end-dashboard/) with npm start)
+
 - SportSee API only contains data for users with id 12 and 18.
 - user 18 has an alternative version of the chart "Sessions average duration", more relevant than the one on the Figma mock-up.
 
