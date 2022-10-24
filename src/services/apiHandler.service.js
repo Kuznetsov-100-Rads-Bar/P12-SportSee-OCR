@@ -24,7 +24,8 @@ sends a request to the API and returns the response. */
         data.id === this.userId || data.userId === this.userId
       )) || {};
     } else if (this.isMockActive === 'false') {
-      response = await axios.get(`${this.baseUrl}/user/${this.userId}${apiEndpoint}`).then((res) => res.data.data).catch((err) => { return {} });
+      // response = await axios.get(`${this.baseUrl}/user/${this.userId}${apiEndpoint}`).then((res) => res.data.data).catch((err) => { return {} });
+      response = await axios.get(`${this.baseUrl}/user/${this.userId}${apiEndpoint}`).then((res) => res.data.data);
     }
 
     return response;

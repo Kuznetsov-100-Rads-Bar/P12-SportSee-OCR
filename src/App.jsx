@@ -27,57 +27,66 @@ export default function App() {
   useEffect(() => {
     // apiService.getUserInfos();
     const getUserInfos = async () => {
+     
       const response = await apiService.getUserInfos();
 
-      if (Object.keys(response).length <= 0) {
-        return navigate('/404');
-      }
+      // if (Object.keys(response).length <= 0) {
+      //   return navigate('/404');
+      // }
 
       if (response) {
         setUserInfos(response);
       }
+
+      return response
     }
 
     const getDailyActivities = async () => {
       const response = await apiService.getDailyActivities();
 
-      if (Object.keys(response).length <= 0) {
-        return navigate('/404');
-      }
+      // if (Object.keys(response).length <= 0) {
+      //   return navigate('/404');
+      // }
 
       if (response) {
         setDailyActivities(response);
       }
+
+      return response
     }
 
     const getPerformances = async () => {
       const response = await apiService.getPerformances();
 
-      if (Object.keys(response).length <= 0) {
-        return navigate('/404');
-      }
+      // if (Object.keys(response).length <= 0) {
+      //   return navigate('/404');
+      // }
 
       if (response) {
         setActivities(response);
       }
+
+      return response
     }
 
     const getSessions = async () => {
       const response = await apiService.getSessions();
 
-      if (Object.keys(response).length <= 0) {
-        return navigate('/404');
-      }
+      // if (Object.keys(response).length <= 0) {
+      //   return navigate('/404');
+      // }
 
       if (response) {
         setAverageSessions(response);
       }
+
+      return response
     }
 
-    getUserInfos();
-    getDailyActivities();
-    getPerformances();
-    getSessions();
+    const allPromises = Promise.all([getUserInfos(), getDailyActivities(),getPerformances(),getSessions()])
+    allPromises.catch(() => {
+      navigate('/404')
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
