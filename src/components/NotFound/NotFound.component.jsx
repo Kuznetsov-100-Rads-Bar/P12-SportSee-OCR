@@ -20,19 +20,19 @@ const NotFoundContainer = styled.div`
   margin: 30px;
 `;
 const NotFoundTitle = styled.h1`
-  color: #ff6060;
+  color: #FF0101;
   margin: 0;
   text-align: center;
   font-size: 6rem;
 `;
 const NotFoundDescription = styled.p`
-  color: #ff6060;
+  color: #A9A9A9;
   text-align: center;
   font-size: 1.125rem;
 `;
 
 const NotFoundLink = styled.a`
-  color: #ff6060;
+  color: #A9A9A9;
   text-align: center;
   display: block;
   margin: 100px 0 0 0;

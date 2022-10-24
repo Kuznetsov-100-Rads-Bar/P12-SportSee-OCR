@@ -1,10 +1,7 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Dashboard from "./pages/Dashboard";
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams, useLocation } from 'react-router-dom';
 import { apiHandler } from "./services/apiHandler.service";
-import { useNavigate } from "react-router-dom";
 
 /**
  * I'm using the useEffect hook to fetch data from an API and then I'm using the useState hook to set
@@ -13,6 +10,7 @@ import { useNavigate } from "react-router-dom";
  * @returns The userInfos, dailyActivities, averageSessions, and activities are being returned.
  */
 export default function App() {
+  const location = useLocation();
   const params = useParams();
   const userId = params.id;
   const navigate = useNavigate();
@@ -83,7 +81,7 @@ export default function App() {
       return response
     }
 
-    const allPromises = Promise.all([getUserInfos(), getDailyActivities(),getPerformances(),getSessions()])
+    const allPromises = Promise.all([getUserInfos(), getDailyActivities(),getPerformances(),getSessions()]);
     allPromises.catch(() => {
       navigate('/404')
     })
@@ -105,7 +103,7 @@ export default function App() {
     )
   } else {
     return (
-      <Dashboard userInfos={userInfos} dailyActivities={dailyActivities} averageSessions={averageSessions} activities={activities} />
+      <Dashboard location={location.pathname} userInfos={userInfos} dailyActivities={dailyActivities} averageSessions={averageSessions} activities={activities} />
     );
   }
 }

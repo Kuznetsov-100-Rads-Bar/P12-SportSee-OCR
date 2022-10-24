@@ -18,7 +18,6 @@ import PropTypes from 'prop-types'
 export default function Dashboard(props) {
   const { dailyActivities, averageSessions, activities } = props;
   const { firstName, todayScore, keyData } = props.userInfos;
-
   return (
     <StyledDashboard>
       <Header />
@@ -27,29 +26,29 @@ export default function Dashboard(props) {
           <Sidebar />
         </DashboardLeft>
         <DashboardRight>
-          <DashboardAbout>
-            <DashboardProfile>
-              Bonjour{" "}
-              <DashboardProfileSpan>
-                {firstName}
-              </DashboardProfileSpan>
-            </DashboardProfile>
-            <DashboardSlogan>
-              Félicitation ! Vous avez explosé vos objectifs hier 👏
-            </DashboardSlogan>
-          </DashboardAbout>
-          <DashboardWrapper>
-            <DashboardCharts>
-              <DailyActivityChart dailyActivities={dailyActivities} />
-              <DailyChartsWrapper>
-                <AverageSessionsChart averageSessions={averageSessions} />
-                <ActivitiesChart performances={activities} />
-                <ScoreChart todayScore={todayScore} />
-              </DailyChartsWrapper>
-            </DashboardCharts>
-            <StatsCardGroup keyData={keyData} />
-          </DashboardWrapper>
-        </DashboardRight>
+            <DashboardAbout>
+              <DashboardProfile>
+                Bonjour{" "}
+                <DashboardProfileSpan>
+                  {firstName}
+                </DashboardProfileSpan>
+              </DashboardProfile>
+              <DashboardSlogan>
+                Félicitation ! Vous avez explosé vos objectifs hier 👏
+              </DashboardSlogan>
+            </DashboardAbout>
+            <DashboardWrapper>
+              <DashboardCharts>
+                <DailyActivityChart dailyActivities={dailyActivities} />
+                <DailyChartsWrapper>
+                  <AverageSessionsChart averageSessions={averageSessions} />
+                  <ActivitiesChart performances={activities} />
+                  <ScoreChart todayScore={todayScore} />
+                </DailyChartsWrapper>
+              </DashboardCharts>
+              <StatsCardGroup keyData={keyData} />
+            </DashboardWrapper>
+          </DashboardRight>
       </DashboardContainer>
     </StyledDashboard>
   );

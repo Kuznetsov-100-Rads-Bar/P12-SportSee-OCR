@@ -22,7 +22,7 @@
 
 - Clone the back repository with git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
 - while in the back-end repo, open and launch a Terminal and installing the project dependencies: npm install
-- Once ready launch the back-end on port 3030 with the command: npm start
+- Once ready launch the back-end on port 3030 [http://localhost:3030](http://localhost:3030) with the command: npm start
 
 ## WEB APP URL
 
