@@ -1,3 +1,4 @@
+/* It's importing the axios library. */
 import axios from "axios";
 import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_PERFORMANCE } from "../data/MockedData";
 
