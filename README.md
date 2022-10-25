@@ -22,7 +22,7 @@
 
 - Clone the back repository with git clone [https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
 - while in the back-end repo, open and launch a Terminal and installing the project dependencies: **npm install**
-- Port is changeable in app folder via index.js file => **const port=3030**
+- Port is changeable in app folder via index.js file => **const port=3030**  (~~const port=3030~~)
 - Once ready launch the back-end on port **3030** [http://localhost:3030](http://localhost:3030) with the command: **npm start**
 
 ## WEB APP URL Currently only two users have been mocked. They have userId 12 and 18
@@ -38,7 +38,7 @@ You can view your React application in web, you can go at [http://localhost:3000
 Example URL
 You can test the website display using the id 12 [http://localhost:3000/user/12](http://localhost:3000/user/12)
 
-## Alt-H1 Note
+## Note
 
 ### **Warning**
 
