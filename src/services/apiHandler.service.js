@@ -26,6 +26,7 @@ sends a request to the API and returns the response. */
       )) || {};
     } else if (this.isMockActive === 'false') {
       // response = await axios.get(`${this.baseUrl}/user/${this.userId}${apiEndpoint}`).then((res) => res.data.data).catch((err) => { return {} });
+      /* It's sending a request to the API and returning the response. */
       response = await axios.get(`${this.baseUrl}/user/${this.userId}${apiEndpoint}`).then((res) => res.data.data);
     }
 
@@ -64,14 +65,18 @@ returns the response. */
     });
     // console.log("getDailyActivities Called");
 
+/* It's checking if the response is empty or not. If it's empty, it's returning an empty object. */
     if (!response || Object.keys(response).length <= 0) {
       return {};
     }
 
+    /* It's sorting the data by day and reversing it. */
     const data = response.sessions;
     return data.sort((a, b) => new Date(b.day) - new Date(a.day)).reverse();
   }
 
+/* It's a function that takes no parameters. It's a function that sends a request to the API and
+returns the response. */
   getPerformances = async () => {
     const response = await this.sendRequest({
       apiEndpoint: `/performance`,
@@ -93,10 +98,13 @@ returns the response. */
       6: 'Intensité'
     }
 
+/* It's creating an empty array. */
     let data = [];
 
     /* It's a loop that iterates over the response and pushes the data to the formattedData array. */
+/* It's checking if the response is empty or not. If it's empty, it's returning an empty object. */
     if (Object.keys(response).length > 0) {
+/* It's a loop that iterates over the response and pushes the data to the formattedData array. */
       for (const item in activitiesName) {
         const activityName = activitiesName[item];
 
@@ -119,6 +127,8 @@ returns the response. */
     }
   }
 
+/* It's a function that takes no parameters. It's a function that sends a request to the API and
+returns the response. */
   getSessions = async () => {
     const response = await this.sendRequest({
       apiEndpoint: `/average-sessions`,
@@ -127,21 +137,23 @@ returns the response. */
 
     // console.log("getSessions Called");
 
+/* It's checking if the response is empty or not. If it's empty, it's returning an empty object. */
     if (!response || Object.keys(response).length <= 0) {
       return {};
     }
 
+    /* It's creating an empty array. */
     const data = [];
     if (Object.keys(response.sessions).length > 0) {
       /* It's a loop that iterates over the response and pushes the data to the formattedData array. */
       for (const item of response.sessions) {
         // console.log('item', item)
-   /* It's a ternary operator that checks if the item.day is equal to 1, if it's true, it's returning
-   L, if it's false, it's checking if the item.day is equal to 2 or 3, if it's true, it's returning
-   M, if it's false, it's checking if the item.day is equal to 4, if it's true, it's returning J, if
-   it's false, it's checking if the item.day is equal to 5, if it's true, it's returning V, if it's
-   false, it's checking if the item.day is equal to 6, if it's true, it's returning S, if it's
-   false, it's returning D. */
+        /* It's a ternary operator that checks if the item.day is equal to 1, if it's true, it's returning
+        L, if it's false, it's checking if the item.day is equal to 2 or 3, if it's true, it's returning
+        M, if it's false, it's checking if the item.day is equal to 4, if it's true, it's returning J, if
+        it's false, it's checking if the item.day is equal to 5, if it's true, it's returning V, if it's
+        false, it's checking if the item.day is equal to 6, if it's true, it's returning S, if it's
+        false, it's returning D. */
         const format = {
           day: item.day === 1 ? 'L' :
             item.day === 2 || item.day === 3 ? 'M' :
@@ -150,7 +162,7 @@ returns the response. */
                   item.day === 6 ? 'S' : 'D',
           sessionLength: item.sessionLength
         }
-/* It's pushing the format to the data array. */
+      /* It's pushing the format to the data array. */
         data.push(format);
       }
     }
