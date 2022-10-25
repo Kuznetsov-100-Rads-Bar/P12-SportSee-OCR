@@ -51,6 +51,5 @@ Please start and launch the Back-End  [P9-front-end-dashboard/](P9-front-end-das
 ## LEARN MORE
 
 You can read more
-[Recharts](https://recharts.org/en-US)
-
-[@use JSDoc](https://jsdoc.app/)
+-[Recharts](https://recharts.org/en-US)
+-[@use JSDoc](https://jsdoc.app/)
