@@ -121,9 +121,7 @@ CustomTooltip.propTypes = {
   payload: PropTypes.array,
 };
 
-AverageSessionsChart.propTypes = {
-  userId: PropTypes.number.isRequired,
-};
+
 
 const StyledAverageSessions = styled.div`
   position: relative;

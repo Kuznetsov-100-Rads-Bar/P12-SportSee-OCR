@@ -34,7 +34,7 @@ export default function App() {
 /**
  * I'm going to call the getUserInfos function from the apiService file, and if the response is not
  * empty, I'm going to set the userInfos state with the response.
- * @returns The response from the API call.
+ * @returns {Promise} The response from the API call.
  */
     const getUserInfos = async () => {
      

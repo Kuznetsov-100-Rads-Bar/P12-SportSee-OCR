@@ -11,10 +11,7 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import StatsCardGroup from "../components/Stats/StatsCardGroup";
 import PropTypes from 'prop-types'
 
-/**
- * It's a function that returns a component that displays a dashboard.
- * @returns The data is being returned as a string.
- */
+
 export default function Dashboard(props) {
   const { dailyActivities, averageSessions, activities } = props;
   const { firstName, todayScore, keyData } = props.userInfos;
