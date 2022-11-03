@@ -42,7 +42,7 @@ You can test the website display using the id 12  [http://localhost:3000/user/12
 
 ### **Warning**
 
-- To get started, first launch the front-end and you will have a **404** page and a link below that will take you to  [localhost3000/user/12](localhost3000/user/12)
+- To get started, first launch the front-end and you will have a **404** page and links below that will take you to  [localhost3000/user/12](localhost/user/12)=> Back to the page or [localhost3000/user/12](localhost3000/user/12) or [localhost3000/user/18](localhost3000/user/18) that you have the possibility to choose ! !
 
 Please start and launch the Back-End  [P9-front-end-dashboard/](P9-front-end-dashboard/) with command **npm start**
 
