@@ -23,7 +23,7 @@
 - Clone the back repository with git clone  [https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
 - while in the back-end repo, open and launch a Terminal and installing the project dependencies: **npm install**
 - Port is changeable in app folder via index.js file => **const port=3030**  (~~const port=3000~~)
-- Once ready launch the back-end on port **3030** [http://localhost:3030](http://localhost:3030) with the command: **npm start**
+- Once ready launch the back-end on port **3030** [http://localhost:3030](http://localhost:3030) with the command: **npm start** => A message saying : "Magic happens on port 3030" should appear in the terminal to confirm successful launch
 
 ## WEB APP URL Currently only two users have been mocked. They have userId 12 and 18
 

@@ -13,10 +13,10 @@ export default function NotFound() {
         Retourner sur la page d'accueil
       </NotFoundLink>
       <NotFoundLink as={Link} to="/user/12">
-        Aller vers le profil 12
+        Aller vers le profil utilisateur 12
 </NotFoundLink>
       <NotFoundLink as={Link} to="/user/18">
-        Aller vers le profil 18
+        Aller vers le profil utilisateur 18
 </NotFoundLink>
     </NotFoundContainer>
   );
