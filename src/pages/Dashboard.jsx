@@ -1,3 +1,8 @@
+/**
+ * @file Dashboard.jsx is the homepage of the application with all charts
+ * @author Behar Rahala AbdelKader
+ * @see https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR/blob/main/src/pages/Dashboard.jsx
+ */
 import React from "react";
 
 import styled from "styled-components";
