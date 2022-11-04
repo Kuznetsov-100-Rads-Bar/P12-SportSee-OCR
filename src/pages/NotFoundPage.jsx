@@ -1,3 +1,8 @@
+/**
+ * @file NotFoundPage.jsx is the page that display if number of user doesn't exist
+ * @author Behar Rahala AbdelKader
+ * @see https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR/blob/main/src/pages/NotFoundPage.jsx
+ */
 import React from "react";
 
 import styled from "styled-components";
