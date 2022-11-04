@@ -1,5 +1,7 @@
 /* It's importing the axios library. */
 import axios from "axios";
+
+/* It's importing the data from the MockedData file. */
 import { USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_PERFORMANCE } from "../data/MockedData";
 
 /* It's a class that handles the API requests */
@@ -9,9 +11,14 @@ export class apiHandler {
  * passed in, sets the isMockActive to true, and sets the baseUrl to localhost:3030.
  * @param {number} userId
  */
+/* It's a constructor that takes a userId as a parameter and sets the userId to the userId
+passed in, sets the isMockActive to true, and sets the baseUrl to localhost:3030. */
   constructor(userId) {
+/* It's setting the userId to the userId passed in. */
     this.userId = parseInt(userId);
+/* It's setting the isMockActive to true. */
     this.isMockActive = process.env.REACT_APP_IS_MOCK_ACTIVE || "true";
+/* It's setting the baseUrl to localhost:3030. */
     this.baseUrl = "http://localhost:3030";
 
     // console.log("api handler started");
@@ -169,6 +176,7 @@ returns the response. */
       }
     }
 
+/* It's returning the data. */
     return data;
   }
 }

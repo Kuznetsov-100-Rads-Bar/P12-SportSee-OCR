@@ -1,3 +1,9 @@
+/**
+ * @file NotFound.component.jsx It displays the links including the two user profile links, and the 404 page
+ * @author Behar Rahala AbdelKader
+ * @see https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR/blob/main/src/components/NotFound/NotFound.component.jsx
+ */
+
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";

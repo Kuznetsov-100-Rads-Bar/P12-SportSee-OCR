@@ -1,3 +1,9 @@
+/**
+ * @file DailyActivityCart.jsx is the file is the file that contains the component with daily activity and their data
+ * @author Behar Rahala AbdelKader
+ * @see https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR/blob/main/src/components/Charts/DailyActivityChart.jsx
+ */
+
 import React from "react";
 
 import PropTypes from "prop-types";

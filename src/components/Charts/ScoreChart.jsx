@@ -1,3 +1,9 @@
+/**
+ * @file ScoreChart.jsx is the file that contains the component with the score expressed as a percentage of the objective to be achieved
+ * @author Behar Rahala AbdelKader
+ * @see https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR/blob/main/src/components/Charts/ScoreChart.jsx
+ */
+
 import PropTypes from "prop-types";
 import React from "react";
 

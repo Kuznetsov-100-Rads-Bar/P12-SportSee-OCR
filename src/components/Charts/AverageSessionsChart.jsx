@@ -1,3 +1,9 @@
+/**
+ * @file AverageSessionsChart.jsx is the file that contains the component with average session durations and their data and graph
+ * @author Behar Rahala AbdelKader
+ * @see https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR/blob/main/src/components/Charts/AverageSessionsChart.jsx
+ */
+
 import React from "react";
 
 import PropTypes from "prop-types";

@@ -1,3 +1,9 @@
+/**
+ * @file StatsCardGroup.jsx It displays a styled  with the 4 components: calorie, protein, carbohydrate and lipids
+ * @author Behar Rahala AbdelKader
+ * @see https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR/blob/main/src/components/Stats/StatsCardGroup.jsx
+ */
+
 /* Importing the React library. */
 import React from 'react'
 /* A library that allows you to check the types of the props that you are passing to a component. */
@@ -15,6 +21,7 @@ export default function StatsCardGroup(props) {
     const keyData = props.keyData;
 
 
+/* Returning a styled component. */
     return (
         <StyledStatsCardGroup>
             <StatsCard

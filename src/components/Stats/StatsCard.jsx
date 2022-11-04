@@ -1,3 +1,9 @@
+/**
+ * @file StatsCard.jsx It displays a styled div with an image and a value
+ * @author Behar Rahala AbdelKader
+ * @see https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR/blob/main/src/components/Stats/StatsCard.jsx
+ */
+
 import React from "react";
 import PropTypes from "prop-types";
 

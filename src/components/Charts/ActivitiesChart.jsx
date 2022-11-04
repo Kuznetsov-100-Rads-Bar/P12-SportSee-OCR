@@ -1,3 +1,9 @@
+/**
+ * @file ActivitiesCharts.jsx is the file that contains the component with the user's activities chart in the form of radar
+ * @author Behar Rahala AbdelKader
+ * @see https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR/blob/main/src/components/Charts/ActivitiesChart.jsx
+ */
+
 import PropTypes from "prop-types";
 import React from "react";
 

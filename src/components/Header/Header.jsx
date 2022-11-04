@@ -1,3 +1,10 @@
+/**
+ * @file Header.jsx displays a styled header, which contains a navbar container, which contains a navbar logo, which
+  contains a navbar menu links, which contains a navbar menu link
+ * @author Behar Rahala AbdelKader
+ * @see https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR/blob/main/src/components/Header/Header.jsx
+ */
+
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
