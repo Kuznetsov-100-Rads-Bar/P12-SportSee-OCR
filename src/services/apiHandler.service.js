@@ -1,3 +1,9 @@
+/**
+ * @file apiHandler.service.js is the file for call data backend, or mock if back offline
+ * @author Behar Rahala AbdelKader
+ * @see https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR/blob/main/src/services/apiHandler.service.js
+ */
+
 /* It's importing the axios library. */
 import axios from "axios";
 
