@@ -97,8 +97,11 @@ export default function App() {
      * called with the response object as an argument. Finally, the response object is returned.
      * @returns The response from the API call.
      */
-    const getSessions = async () => {
-      const response = await apiService.getSessions();
+    const getSessions = /* It's making the function asynchronous. */
+    async () => {
+      const response = /* It's waiting for the promise to be resolved before moving on to the next line
+      of code. */
+      await apiService.getSessions();
 
       // if (Object.keys(response).length <= 0) {
       //   return navigate('/404');

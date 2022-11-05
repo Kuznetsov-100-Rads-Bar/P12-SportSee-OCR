@@ -21,7 +21,12 @@ import {
 import styled from "styled-components";
 
 /* A function that returns a component. */
+/**
+ * Déstructurer à la source
+ *  Lorsque les props sont passées en paramètre du DailyActivityChart
+ */
 export default function DailyActivityChart(props) {
+/* Destructuring the props object. */
   const { dailyActivities } = props;
 
   return (

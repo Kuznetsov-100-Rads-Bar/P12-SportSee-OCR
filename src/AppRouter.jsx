@@ -1,3 +1,9 @@
+/**
+ * @file AppRouter.jsx this is the file with router pages of the project, and contains A router that is used to navigate between pages
+ * @author Behar Rahala AbdelKader
+ * @see https://github.com/Kuznetsov-100-Rads-Bar/P12-SportSee-OCR/blob/main/src/AppRouter.jsx
+ */
+
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import App from "./App";
@@ -12,6 +18,7 @@ import NotFoundPage from "./pages/NotFoundPage";
  * If the URL matches the path, then render the element, otherwise, render the next route.
  */
 export default function AppRouter() {
+/* A router that is used to navigate between pages. */
   return (
     <BrowserRouter>
       <Routes>
